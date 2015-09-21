@@ -1576,7 +1576,8 @@ function Socket(uri, opts){
     uri = parseuri(uri);
     opts.host = uri.host;
     opts.secure = uri.protocol == 'https' || uri.protocol == 'wss';
-    opts.port = uri.port;
+    //Allow port specified in options to override URL
+    opts.port = opts.port || uri.port;
     if (uri.query) opts.query = uri.query;
   }
 
